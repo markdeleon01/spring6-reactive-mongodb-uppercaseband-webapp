@@ -10,8 +10,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 
-@RequiredArgsConstructor
 @Component
+@RequiredArgsConstructor
 public class BootStrapData implements CommandLineRunner {
 
     private final ArticleRepository articleRepository;
@@ -19,7 +19,11 @@ public class BootStrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        loadInitialData();
+
+        articleRepository.deleteAll()
+                        .doOnSuccess( success -> {
+                            loadInitialData();
+                        }).subscribe();
 
         articleRepository.count().subscribe(count -> {
             System.out.println("Article count is: " + count);
