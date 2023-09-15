@@ -65,7 +65,7 @@ public class ArticleControllerTest {
     public void testGetArticlesByNoCategory() {
         log.debug("testGetArticlesByNoCategory");
 
-        webTestClient.get().uri(ArticleController.BASE_URL + "/category/")
+        webTestClient.get().uri(ArticleController.BASE_URL + "/category/ ")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
