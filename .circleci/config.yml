@@ -10,10 +10,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: cimg/openjdk:17.0.8
-      - image: cimg/mongo:6
-        environment:
-          MONGO_INITDB_ROOT_USERNAME: root
-          MONGO_INITDB_ROOT_PASSWORD: example
+      - image: cimg/mongo:6.0
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
