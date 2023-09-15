@@ -6,6 +6,7 @@ import com.uppercaseband.domain.Media;
 import com.uppercaseband.domain.MediaType;
 import com.uppercaseband.mappers.ArticleMapper;
 import com.uppercaseband.mappers.ArticleMapperImpl;
+import com.uppercaseband.mappers.MediaMapper;
 import com.uppercaseband.model.ArticleDTO;
 import com.uppercaseband.repositories.ArticleRepository;
 import org.junit.jupiter.api.BeforeAll;
@@ -15,6 +16,8 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
 import reactor.core.publisher.Flux;
@@ -41,6 +44,10 @@ public class ArticleServiceImplTest {	//unit tests the service and mappers
     @BeforeAll
     public void setUp() {
         articleService = new ArticleServiceImpl(articleRepository, articleMapper);
+
+        assertNotNull(articleMapper);
+        assertNotNull(ArticleMapper.INSTANCE);
+        assertNotNull(MediaMapper.INSTANCE);
     }
 
 
