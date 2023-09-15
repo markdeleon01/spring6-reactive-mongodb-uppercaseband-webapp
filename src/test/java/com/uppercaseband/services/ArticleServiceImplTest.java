@@ -18,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 import reactor.core.publisher.Flux;
@@ -53,6 +54,7 @@ public class ArticleServiceImplTest {	//unit tests the service and mappers
 
     @Test
     public void testGetAllArticles() {
+        //behaviour-based development
 
         //given
         Set<Article> articlesSet = new HashSet<>();
@@ -68,6 +70,23 @@ public class ArticleServiceImplTest {	//unit tests the service and mappers
         Long count = articles.count().block();	//trigger the service call and conversions
         assertEquals(3, count);
         verify(articleRepository, times(1)).findAll();
+    }
+
+
+    @Test
+    void getArticlesByCategory() throws Exception {
+        //behaviour-based development
+
+        //given
+        given(articleRepository.findByCategory(any(Category.class))).willReturn(Flux.just(getTestArticle3()));
+
+        //when
+        Flux<ArticleDTO> articles = articleService.getArticlesByCategory(Category.EVENTS.name());
+
+        //then
+        Long count = articles.count().block();	//trigger the service call and conversions
+        assertEquals(1, count);
+        verify(articleRepository, times(1)).findByCategory(any(Category.class));
     }
 
 
