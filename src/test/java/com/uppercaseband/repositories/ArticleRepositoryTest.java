@@ -7,10 +7,13 @@ import com.uppercaseband.domain.MediaType;
 
 import org.junit.jupiter.api.*;
 
+import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DataMongoTest                    //integration test
@@ -21,21 +24,37 @@ public class ArticleRepositoryTest {
 
 
     @BeforeEach
-    public void setUp() throws InterruptedException {
+    public void setUp() {
+        AtomicBoolean atomicBoolean = new AtomicBoolean(false);
+
         articleRepository.deleteAll().block();
-        Thread.sleep(1000l);
 
         articleRepository.save(getTestArticle1())
-                .subscribe(article -> System.out.println(article.toString()));
-        Thread.sleep(1000l);
+                .subscribe(article -> {
+                    System.out.println(article.toString());
+                    atomicBoolean.set(true);
+                });
+
+        await().untilTrue(atomicBoolean);
+        atomicBoolean.set(false);
 
         articleRepository.save(getTestArticle2())
-                .subscribe(article -> System.out.println(article.toString()));
-        Thread.sleep(1000l);
+                .subscribe(article -> {
+                    System.out.println(article.toString());
+                    atomicBoolean.set(true);
+                });
+
+        await().untilTrue(atomicBoolean);
+        atomicBoolean.set(false);
 
         articleRepository.save(getTestArticle3())
-                .subscribe(article -> System.out.println(article.toString()));
-        Thread.sleep(1000l);
+                .subscribe(article -> {
+                    System.out.println(article.toString());
+                    atomicBoolean.set(true);
+                });
+
+        await().untilTrue(atomicBoolean);
+        atomicBoolean.set(false);
 
         articleRepository.count().subscribe(count -> {
             System.out.println("Articles count is: " + count);
