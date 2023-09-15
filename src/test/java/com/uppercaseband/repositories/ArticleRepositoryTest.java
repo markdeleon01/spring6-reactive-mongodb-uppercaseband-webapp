@@ -27,7 +27,7 @@ public class ArticleRepositoryTest {
     public void setUp() {
         AtomicBoolean atomicBoolean = new AtomicBoolean(false);
 
-        articleRepository.deleteAll().block();
+        articleRepository.deleteAll().subscribe();
 
         articleRepository.save(getTestArticle1())
                 .subscribe(article -> {
