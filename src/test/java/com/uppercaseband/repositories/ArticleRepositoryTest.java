@@ -45,7 +45,7 @@ public class ArticleRepositoryTest {
 
     @Test
     @Order(100)
-    void testGetArticles() {
+    public void testGetArticles() {
 
         articleRepository.count().subscribe(count -> {
             System.out.println("testGetArticles count is: " + count);

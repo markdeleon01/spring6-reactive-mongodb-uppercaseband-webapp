@@ -74,7 +74,7 @@ public class ArticleServiceImplTest {	//unit tests the service and mappers
 
 
     @Test
-    void getArticlesByCategory() throws Exception {
+    public void getArticlesByCategory() throws Exception {
         //behaviour-based development
 
         //given
@@ -90,7 +90,7 @@ public class ArticleServiceImplTest {	//unit tests the service and mappers
     }
 
     @Test
-    void getArticlesByInvalidCategory() throws Exception  {
+    public void getArticlesByInvalidCategory() throws Exception  {
 
         //behaviour-based development
 
