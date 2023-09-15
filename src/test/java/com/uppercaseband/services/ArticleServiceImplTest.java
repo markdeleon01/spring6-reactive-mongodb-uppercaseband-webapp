@@ -89,6 +89,22 @@ public class ArticleServiceImplTest {	//unit tests the service and mappers
         verify(articleRepository, times(1)).findByCategory(any(Category.class));
     }
 
+    @Test
+    void getArticlesByInvalidCategory() throws Exception  {
+
+        //behaviour-based development
+
+        //given
+        given(articleRepository.findByCategory(any(Category.class))).willThrow(IllegalArgumentException.class);
+
+        //when
+        Flux<ArticleDTO> articles = articleService.getArticlesByCategory("INVALID");
+
+        //then
+        Long count = articles.count().block();	//trigger the service call and conversions
+        assertEquals(0, count);
+    }
+
 
     Article getTestArticle1() {
         Media article1Media = Media.builder()
