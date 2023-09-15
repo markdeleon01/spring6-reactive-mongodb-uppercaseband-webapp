@@ -19,7 +19,7 @@ public class Article {
 
     private String description;
 
-    private Integer sortOrder;
+    private Integer displayOrder;
 
     private Media media;
 
