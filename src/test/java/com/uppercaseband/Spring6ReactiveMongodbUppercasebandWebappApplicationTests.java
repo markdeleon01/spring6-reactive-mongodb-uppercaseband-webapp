@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
+@SpringBootTest(useMainMethod = SpringBootTest.UseMainMethod.ALWAYS)
 @Slf4j
 class Spring6ReactiveMongodbUppercasebandWebappApplicationTests {
 
@@ -23,7 +23,6 @@ class Spring6ReactiveMongodbUppercasebandWebappApplicationTests {
 	void contextLoads() {
 		log.debug("Spring6ReactiveMongodbUppercasebandWebappApplicationTests context loaded");
 		// perform a sanity check to verify that the beans were loaded (not null)
-		assertNotNull(Spring6ReactiveMongodbUppercasebandWebappApplication.class);
 		assertNotNull(context);
 		assertNotNull(articleRepository);
 	}

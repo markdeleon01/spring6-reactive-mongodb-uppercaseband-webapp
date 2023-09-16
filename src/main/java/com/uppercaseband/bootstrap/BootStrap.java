@@ -6,28 +6,30 @@ import com.uppercaseband.domain.Media;
 import com.uppercaseband.domain.MediaType;
 import com.uppercaseband.repositories.ArticleRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 
 @RequiredArgsConstructor
 @Component
-public class BootStrapData implements CommandLineRunner {
+@Slf4j
+public class BootStrap implements CommandLineRunner {
 
     private final ArticleRepository articleRepository;
 
 
     @Override
     public void run(String... args) throws Exception {
-        loadInitialData();
+        loadArticles();
 
         articleRepository.count().subscribe(count -> {
-            System.out.println("Article count is: " + count);
+            log.debug("Article count is: " + count);
         });
     }
 
 
-    private void loadInitialData() {
+    private void loadArticles() {
         articleRepository.count().subscribe(count -> {
             if (count == 0) {
 
