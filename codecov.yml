@@ -1,0 +1,2 @@
+ignore:
+  - "src/main/java/com/uppercaseband/bootstrap"  # ignore folders and all its contents
