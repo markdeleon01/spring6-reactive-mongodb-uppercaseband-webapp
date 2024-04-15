@@ -45,7 +45,7 @@ public class ArticleHandlerTest {
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectBody().jsonPath("$", ArticleDTO.class);
+                .expectBody().jsonPath("$.size()").isEqualTo(2);
     }
 
     @Test
@@ -57,7 +57,8 @@ public class ArticleHandlerTest {
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectStatus().isOk();
+                .expectStatus().isOk()
+                .expectBody().jsonPath("$.size()").isEqualTo(0);
     }
 
     @Test
@@ -69,7 +70,8 @@ public class ArticleHandlerTest {
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectStatus().isOk();
+                .expectStatus().isOk()
+                .expectBody().jsonPath("$.size()").isEqualTo(0);
     }
 
     @Test
