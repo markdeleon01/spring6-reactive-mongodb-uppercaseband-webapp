@@ -24,7 +24,7 @@ public class BootStrap implements CommandLineRunner {
         loadArticles();
 
         articleRepository.count().subscribe(count -> {
-            log.debug("Article count is: " + count);
+            log.debug("Article count is: {}", count);
         });
     }
 

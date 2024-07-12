@@ -38,7 +38,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Flux<ArticleDTO> getArticlesByCategory(String category) {
 
-        log.debug("getArticlesByCategory="+category);
+        log.debug("getArticlesByCategory={}", category);
 
         try {
             Category theCategory = Category.valueOf(category);
