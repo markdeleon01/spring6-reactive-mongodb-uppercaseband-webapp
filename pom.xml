@@ -20,6 +20,8 @@
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
 		<!-- automatically run annotation processors within the incremental compilation -->
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
+		<failsafeArgLine></failsafeArgLine>
+		<skip.integration.tests>false</skip.integration.tests>
 	</properties>
 	<dependencies>
 		<dependency>
