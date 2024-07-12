@@ -14,7 +14,7 @@ such as highlights on the home page, events, discography section, and band infor
 they are stored and retrieved as documents from an embedded MongoDB NoSQL database.
 
 The article resources are exposed with the API route:
-http://localhost:8080/api/v1/articles
+http://localhost:8080/api/v2/articles
 
 JUnit5 tests were written to assert functionalities of the repository, service, and controller classes.
 
@@ -26,15 +26,15 @@ JUnit5 tests were written to assert functionalities of the repository, service, 
    https://maven.apache.org/download.cgi
 3. Install MongoDB:  https://www.mongodb.com/docs/manual/installation/
 4. Clone this project repository
-4. Navigate to the project folder and install
+5. Navigate to the project folder and install
    ```sh
    mvn compile
    mvn test
    mvn package
    ```
-5. Run the web application
+6. Run the web application
    ```sh
    java -jar target/spring6-reactive-mongodb-uppercaseband-webapp-0.0.1-SNAPSHOT.jar
    ```
-6. Open a browser window and navigate to: http://localhost:8080/api/v1/articles
-7. Download the Postman desktop app:  https://www.postman.com
+7. Open a browser window and navigate to: http://localhost:8080/api/v2/articles
+8. Download the Postman desktop app:  https://www.postman.com
