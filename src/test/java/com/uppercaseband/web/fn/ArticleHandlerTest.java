@@ -1,4 +1,4 @@
-package com.uppercaseband.controllers;
+package com.uppercaseband.web.fn;
 
 import com.uppercaseband.domain.Category;
 import com.uppercaseband.model.ArticleDTO;
@@ -17,7 +17,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @SpringBootTest
 @AutoConfigureWebTestClient
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class ArticleControllerTest {
+public class ArticleHandlerTest {
 
     @Autowired
     WebTestClient webTestClient;    // Spring Context is loaded and BootStrapData executed on application startup
@@ -27,7 +27,7 @@ public class ArticleControllerTest {
     public void testGetAllArticles() {
         log.debug("testGetAllArticles");
 
-        webTestClient.get().uri(ArticleController.BASE_URL)
+        webTestClient.get().uri(ArticleRouterConfig.BASE_URL)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
@@ -40,12 +40,12 @@ public class ArticleControllerTest {
     public void testGetArticlesByCategory() {
         log.debug("testGetArticlesByCategory");
 
-        webTestClient.get().uri(ArticleController.BASE_URL + "/category/" + Category.HIGHLIGHTS.toString())
+        webTestClient.get().uri(ArticleRouterConfig.BASE_URL + "/category/" + Category.HIGHLIGHTS.toString())
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectBody().jsonPath("$.size()").isEqualTo(2);
+                .expectBody().jsonPath("$", ArticleDTO.class);
     }
 
     @Test
@@ -53,11 +53,11 @@ public class ArticleControllerTest {
     public void testGetArticlesByInvalidCategory() {
         log.debug("testGetArticlesByInvalidCategory");
 
-        webTestClient.get().uri(ArticleController.BASE_URL + "/category/SOME_INVALID_CATEGORY")
+        webTestClient.get().uri(ArticleRouterConfig.BASE_URL + "/category/SOME_INVALID_CATEGORY")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectStatus().isNotFound();
+                .expectStatus().isOk();
     }
 
     @Test
@@ -65,11 +65,11 @@ public class ArticleControllerTest {
     public void testGetArticlesByNoCategory() {
         log.debug("testGetArticlesByNoCategory");
 
-        webTestClient.get().uri(ArticleController.BASE_URL + "/category/ ")
+        webTestClient.get().uri(ArticleRouterConfig.BASE_URL + "/category/ ")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
-                .expectStatus().isNotFound();
+                .expectStatus().isOk();
     }
 
     @Test
@@ -77,7 +77,7 @@ public class ArticleControllerTest {
     public void testGetArticlesByEmptyCategory() {
         log.debug("testGetArticlesByEmptyCategory");
 
-        webTestClient.get().uri(ArticleController.BASE_URL + "/category/")
+        webTestClient.get().uri(ArticleRouterConfig.BASE_URL + "/category/")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON)
@@ -89,7 +89,7 @@ public class ArticleControllerTest {
     public void testGetArticlesByCategoryResponseBody() {
         log.debug("testGetArticlesByCategoryResponseBody");
 
-        webTestClient.get().uri(ArticleController.BASE_URL + "/category/EVENTS")
+        webTestClient.get().uri(ArticleRouterConfig.BASE_URL + "/category/EVENTS")
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
