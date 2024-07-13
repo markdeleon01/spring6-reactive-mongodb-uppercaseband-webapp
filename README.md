@@ -30,6 +30,7 @@ JUnit5 tests were written to assert functionalities of the repository, service, 
    ```sh
    mvn compile
    mvn test
+   mvn verify
    mvn package
    ```
 6. Run the web application
@@ -38,3 +39,5 @@ JUnit5 tests were written to assert functionalities of the repository, service, 
    ```
 7. Open a browser window and navigate to: http://localhost:8080/api/v2/articles
 8. Download the Postman desktop app:  https://www.postman.com
+9. Use the Postman desktop app to access the exposed APIs.
+10. Open the Swagger UI / Open API definition: http://localhost:8080/swagger-ui.html
