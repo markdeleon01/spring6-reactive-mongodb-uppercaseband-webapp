@@ -1,6 +1,9 @@
 package com.uppercaseband.web.fn;
 
+import com.uppercaseband.services.ArticleService;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.core.annotations.RouterOperation;
+import org.springdoc.core.annotations.RouterOperations;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -20,6 +23,8 @@ public class ArticleRouterConfig {
 
     private final ArticleHandler articleHandler;
 
+    @RouterOperations({@RouterOperation(path = BASE_URL, beanClass = ArticleService.class, beanMethod = "getAllArticles"),
+            @RouterOperation(path =  BASE_URL + "/category/{category}", beanClass = ArticleService.class, beanMethod = "getArticlesByCategory")})
     @Bean
     public RouterFunction<ServerResponse> articleRoutes() {
         return route()
