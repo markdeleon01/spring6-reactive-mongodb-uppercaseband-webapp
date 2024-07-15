@@ -1,8 +1,8 @@
 # Spring6 Reactive WebFlux REST backend web application for UPPERCASE band
 
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/markdeleon01/spring6-reactive-mongodb-uppercaseband-webapp/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/markdeleon01/spring6-reactive-mongodb-uppercaseband-webapp/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/markdeleon01/spring6-webflux.fn-mongodb-uppercaseband-webapp/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/markdeleon01/spring6-webflux.fn-mongodb-uppercaseband-webapp/tree/main)
 
-[![codecov](https://codecov.io/github/markdeleon01/spring6-reactive-mongodb-uppercaseband-webapp/graph/badge.svg?token=IJQ8DOYDLQ)](https://codecov.io/github/markdeleon01/spring6-reactive-mongodb-uppercaseband-webapp)
+[![codecov](https://codecov.io/gh/markdeleon01/spring6-webflux.fn-mongodb-uppercaseband-webapp/graph/badge.svg?token=IJQ8DOYDLQ)](https://codecov.io/gh/markdeleon01/spring6-webflux.fn-mongodb-uppercaseband-webapp)
 
 
 This repository is for a RESTful web application built on Spring6 Reactive WebFlux Framework for my band's website.
