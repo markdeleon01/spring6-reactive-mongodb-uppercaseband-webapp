@@ -11,6 +11,9 @@ jobs:
       # specify the version you desire here
       - image: cimg/openjdk:17.0.8
       - image: mongo:6.0
+        environment:
+          - MONGODB_USERNAME: "root"
+          - MONGODB_PASSWORD: "example"
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -25,7 +28,6 @@ jobs:
 
     steps:
       - checkout
-      - setup_remote_docker
 
       # Download and cache dependencies
       - restore_cache:
