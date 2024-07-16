@@ -29,7 +29,6 @@ JUnit5 tests were written to assert functionalities of the repository, service, 
 5. Navigate to the project folder and install
    ```sh
    mvn compile
-   mvn test
    mvn verify
    mvn package
    ```
