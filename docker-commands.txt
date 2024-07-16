@@ -5,4 +5,4 @@
 docker run --name mongo -d -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=example -p 27017:27017 mongo
 
 ## run app image
-docker run --name uppercasemongo -d -e UPPERCASEDB_MONGOHOST=mongo --link mongo:mongo docker.io/library/spring6-reactive-mongodb-uppercaseband-webapp:0.0.1-SNAPSHOT
+docker run --name uppercasemongo -d -e UPPERCASEDB_MONGOHOST=mongo --link mongo:mongo -p 8080:8080 docker.io/library/spring6-reactive-mongodb-uppercaseband-webapp:0.0.1-SNAPSHOT
