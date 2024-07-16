@@ -12,8 +12,8 @@ jobs:
       - image: cimg/openjdk:17.0.8
       - image: mongo:6.0
         environment:
-          - MONGODB_USERNAME: "root"
-          - MONGODB_PASSWORD: "example"
+          - MONGO_INITDB_ROOT_USERNAME: "root"
+          - MONGO_INITDB_ROOT_PASSWORD: "example"
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
