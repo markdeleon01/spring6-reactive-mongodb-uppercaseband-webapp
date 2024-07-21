@@ -10,7 +10,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: cimg/openjdk:17.0.8
-      - image: mongo:6.0
+      - image: mongo:latest
         environment:
           - MONGO_INITDB_ROOT_USERNAME: "root"
           - MONGO_INITDB_ROOT_PASSWORD: "example"
