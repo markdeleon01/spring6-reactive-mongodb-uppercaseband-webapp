@@ -40,7 +40,7 @@ public class ArticleHandlerTest {
     public void testGetArticlesByCategory() {
         log.debug("testGetArticlesByCategory");
 
-        webTestClient.get().uri(ArticleRouterConfig.BASE_URL + "/category/" + Category.HIGHLIGHTS.toString())
+        webTestClient.get().uri(ArticleRouterConfig.BASE_URL + "/category/" + Category.HIGHLIGHTS)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
