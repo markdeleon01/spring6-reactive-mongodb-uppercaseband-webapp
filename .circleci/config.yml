@@ -9,7 +9,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: cimg/openjdk:17.0.8
+      - image: cimg/openjdk:21
       - image: mongo:latest
 
       # Specify service dependencies here if necessary
