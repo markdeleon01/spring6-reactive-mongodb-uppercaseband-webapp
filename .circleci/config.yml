@@ -9,7 +9,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: cimg/openjdk:21.0.2-node
+      - image: cimg/openjdk:21.0.2
       - image: mongo:latest
 
       # Specify service dependencies here if necessary
@@ -26,7 +26,6 @@ jobs:
     steps:
       - checkout
       - run: java --version
-      - run: node --version
 
       # Download and cache dependencies
       - restore_cache:
