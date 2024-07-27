@@ -4,7 +4,9 @@ import com.uppercaseband.domain.Category;
 import com.uppercaseband.mappers.ArticleMapper;
 import com.uppercaseband.model.ArticleDTO;
 import com.uppercaseband.repositories.ArticleRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 
@@ -13,18 +15,14 @@ import java.io.StringWriter;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class ArticleServiceImpl implements ArticleService {
 
     private final ArticleRepository articleRepository;
     private final ArticleMapper articleMapper;
+    
 
-
-    public ArticleServiceImpl(ArticleRepository articleRepository, ArticleMapper articleMapper) {
-        this.articleRepository = articleRepository;
-        this.articleMapper = articleMapper;
-    }
-
-
+    @Cacheable( cacheNames = "allArticlesCache")
     @Override
     public Flux<ArticleDTO> getAllArticles() {
 
@@ -35,6 +33,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
 
+    @Cacheable( cacheNames = "articlesCategoryCache")
     @Override
     public Flux<ArticleDTO> getArticlesByCategory(String category) {
 
